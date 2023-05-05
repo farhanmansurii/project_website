@@ -7,11 +7,10 @@ const { Login, Signup } = require('../models/userinfo');
 router.post('/signup', async (req, res) => {
   try
   {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
     const user = new Signup({
       name: req.body.name,
       email: req.body.email,
-      password: hashedPassword,
+      password: req.body.password,
       date: new Date()
     });
     await user.save();
@@ -32,7 +31,7 @@ router.post('/login', async (req, res) => {
     {
       return res.status(400).send('Invalid email or password');
     }
-    const isPasswordValid = await bcrypt.compare(req.body.password, user.password);
+    const isPasswordValid = req.body.password===user.password)
     if (!isPasswordValid)
     {
       return res.status(400).send('Invalid email or password');
