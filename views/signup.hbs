@@ -7,13 +7,28 @@
   <title>kaziConstructions SignUp</title>
 </head>
 <body>
-  <h2>SignUp</h2>
-  <form action="/signup" method="post">
-  
-  <input type="text" name="name" placeholder="name">
-  <input type="text" name="password" placeholder="password">
-  <input type="submit">
-
+  <body>
+    <h1>Sign Up</h1>
+    {{#if error}}
+    <p>{{error}}</p>
+    {{/if}}
+    <form action="/signup" method="post">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name">
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email">
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password">
+      </div>
+      <button type="submit">Sign Up</button>
+       <a href="/">Already have an account ?</a>
+    </form>
+  </body>
   </form>
 </body>
 </html>

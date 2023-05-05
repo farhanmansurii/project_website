@@ -20,5 +20,18 @@ const userSchema = new mongoose.Schema({
     default: Date.now
   }
 });
+const loginSchema = new mongoose.Schema({
+  email: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  }
+});
 
-module.exports = mongoose.model('User', userSchema);
+
+const Login = mongoose.model('Login', loginSchema);
+const Signup = mongoose.model('User', userSchema);
+module.exports = { Login, Signup }
